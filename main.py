@@ -32,7 +32,6 @@ print("IP address " + str(wlan.ifconfig()[0]) + ", Port " + str(100))
 # host = 'api.thingspeak.com'
 # path = '/update?api_key=' + api_key + '&' + field_name + '=' + str(field_value)
 
-port = "5000"
 pinUsed = OneWire(Pin('P10'))
 temp = DS18X20(pinUsed)
 

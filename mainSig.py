@@ -29,28 +29,20 @@ chrono = Timer.Chrono()
 pinUsed = OneWire(Pin('P10'))
 temp = DS18X20(pinUsed)
 
-dummydata = 10
-mult = 1
-
 while True:
     temp.start_conversion()
     time.sleep(1)
-    
-    #messageBytes=bytes((temp.read_temp_async() & 0xff, ((temp.read_temp_async() >> 8) & 0xff)))
-    #s.send(messageBytes)
-
-    if dummydata >30:
-        mult = -1
-    elif dummydata<10:
-        mult = 1
-
-    dummydata+=mult*2
-
-    s.send(struct.pack("<i",  dummydata))
 
     print("temperature: {}".format(temp.read_temp_async()))
     time.sleep(2)
     distance = ultrasonic.getDistance(chrono, trigger, echo)
     print("tide height: {}".format(distance))
     time.sleep(2)
-    
+
+    distToFloat = float(distance)
+
+    tempBytes=bytearray(struct.pack("f", temp.read_temp_async())) #Converts float into bytearray
+    tempBytes += struct.pack("f", distToFloat)
+    s.send(tempBytes) #Sends message to SigFox
+
+    print(tempBytes)
