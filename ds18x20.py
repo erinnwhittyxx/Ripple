@@ -1,3 +1,12 @@
+# References:
+#
+# George, D., 2015. micropython-infineon/ds18x20.py. [online] GitHub. 
+# Available at: <https://github.com/micropython/micropython-infineon/blob/master/drivers/onewire/ds18x20.py> [Accessed 27 April 2022].
+#
+
+
+
+
 """
 DS18x20 temperature sensor driver for MicroPython.
 

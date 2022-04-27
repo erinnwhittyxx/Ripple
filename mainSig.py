@@ -1,3 +1,9 @@
+# References:
+# 
+# Pycom. n.d. Sigfox Examples. [online] Available at: <https://docs.pycom.io/tutorials/networks/sigfox/> [Accessed 27 April 2022].
+#
+
+
 from network import Sigfox
 import socket
 from machine import Pin, Timer
@@ -41,8 +47,10 @@ while True:
 
     distToFloat = float(distance)
 
-    tempBytes=bytearray(struct.pack("f", temp.read_temp_async())) #Converts float into bytearray
+    #Converts float into bytearray
+    tempBytes=bytearray(struct.pack("f", temp.read_temp_async())) 
     tempBytes += struct.pack("f", distToFloat)
-    s.send(tempBytes) #Sends message to SigFox
+    #Sends message to SigFox
+    s.send(tempBytes) 
 
     print(tempBytes)

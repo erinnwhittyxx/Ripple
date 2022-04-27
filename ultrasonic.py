@@ -1,3 +1,9 @@
+# References:
+#
+# Community.wia.io. 2018. Build a smart mailbox with a Sigfox and Pycom. 
+# [online] Available at: <https://community.wia.io/d/42-build-a-smart-mailbox-with-a-sigfox-and-pycom> [Accessed 27 April 2022].
+#
+
 from machine import Pin, Timer
 import pycom
 import time
